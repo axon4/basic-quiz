@@ -13,15 +13,15 @@
 		props: ['results', 'correctAnswers'],
 		computed: {
 			resultIndex() {
-				let index = 0;
+				let resultIndex = 0;
 
-				this.results.forEach((result, i) => {
+				this.results.forEach((result, index) => {
 					if (result.minimum <= this.correctAnswers && result.maximum >= this.correctAnswers) {
-						index = i;
+						resultIndex = index;
 					};
 				});
 
-				return index;
+				return resultIndex;
 			}
 		}
 	};

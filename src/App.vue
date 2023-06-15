@@ -1,15 +1,10 @@
 <template>
 	<div id='wrapper'>
 		<Transition name='fade' mode='out-in'>
-			<Questions
-				:questions='questions'
-				:questionsAnswered='questionsAnswered'
-				@answer-chosen='onAnswerChosen'
-				v-if='questionsAnswered < questions.length'
-			/>
+			<Questions :questions='questions' :questionsAnswered='questionsAnswered' @answer-chosen='onAnswerChosen' v-if='questionsAnswered < questions.length' />
 			<Result :results='results' :correctAnswers='correctAnswers' v-else />
 		</Transition>
-		<button id='reset-button' @click='reset' v-show='questionsAnswered === questions.length'>Reset</button>
+		<button id='reset-button' @click='reSet' v-show='questionsAnswered === questions.length'>ReSet</button>
 	</div>
 </template>
 
@@ -29,7 +24,7 @@
 				correctAnswers: 0,
 				questions: [
 					{
-						question: 'What is 2 + 2?',
+						question: 'what is 2 + 2?',
 						answers: [
 							{
 								text: '4',
@@ -50,7 +45,7 @@
 						]
 					},
 					{
-						question: 'How many letters are in the word \'banana\'?',
+						question: 'how many letters are in the word \'banana\'?',
 						answers: [
 							{
 								text: '5',
@@ -92,14 +87,14 @@
 					{
 						minimum: 0,
 						maximum: 2,
-						title: 'Try Again!',
+						title: 'Try AGain!',
 						description: 'Do a Little More Studying and You May Succeed!'
 					},
 					{
 						minimum: 3,
 						maximum: 3,
 						title: 'Wow, You\'re a Genius!',
-						description: 'Studying has Definitely Paid Off for You!'
+						description: 'Studying has Definitely Paid-Off for You!'
 					}
 				]
 			}
@@ -112,7 +107,7 @@
 
 				this.questionsAnswered++;
 			},
-			reset() {
+			reSet() {
 				this.questionsAnswered = 0;
 				this.correctAnswers = 0;
 			}

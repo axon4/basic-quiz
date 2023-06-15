@@ -1,28 +1,14 @@
 <template>
 	<div id='questions-wrapper'>
 		<div id='progress'>
-			<div
-				:style='{width: `${(questionsAnswered / questions.length) * 100}%`}'
-				id='bar'
-			>
-			</div>
+			<div id='bar' :style='{width: `${(questionsAnswered / questions.length) * 100}%`}' />
 			<div id='status'>{{ questionsAnswered }} out of {{ questions.length }} Questions Answered</div>
 		</div>
 		<TransitionGroup name='fade'>
-			<div
-				class='single-question'
-				v-for='(question, index) in questions'
-				:key='question.question'
-				v-show='questionsAnswered === index'
-			>
+			<div class='single-question' v-for='(question, index) in questions' :key='question.question' v-show='questionsAnswered === index'>
 				<div class='question'>{{ question.question }}</div>
 				<div class='answers'>
-					<div
-						class='answer'
-						v-for='answer in question.answers'
-						:key='answer.text'
-						@click='onChooseAnswer(answer.isCorrect)'
-					>
+					<div class='answer' v-for='answer in question.answers' :key='answer.text' @click='onChooseAnswer(answer.isCorrect)'>
 						{{ answer.text }}
 					</div>
 				</div>
